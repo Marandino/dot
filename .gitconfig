@@ -3,6 +3,8 @@
 	name = Chiyen Venegas
 [alias]
 	resacon = !git log --source --since=yesterday --until=today --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all --author="Chiyen"
+	allhands = !git log --source --all --author=Chiyen --since=1_week_ago --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+
 	undo = reset --soft HEAD^
 	aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
@@ -22,7 +24,9 @@
 	nxt =	!git add . && git rebase --continue
 	rebass = !git fetch && git rebase --autostash
 	ff = !branch=$(git symbolic-ref HEAD | cut -d '/' -f 3) && git merge --ff-only ${1:-$(git config --get branch.$branch.remote)/$( git config --get branch.$branch.merge | cut -d '/' -f 3)}
+	cp = !git cherry-pick
 	wat = !git whatchanged -p --since="yesterday"
 [core]
 	excludesfile = /home/marandino/.gitignore_global
 	editor = vim
+ 
