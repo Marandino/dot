@@ -20,6 +20,7 @@
 	cane = commit --amend --no-edit
 	lo = log --oneline -n 10
 	gg = !git add -A -p
+	ggg = !git restore --staged .
 	zoro = !git branch --sort=-committerdate  # DESC
 	nxt =	!git add . && git rebase --continue
 	rebass = !git fetch && git rebase --autostash
