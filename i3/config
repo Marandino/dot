@@ -40,8 +40,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # adjust screen brightness
 
-bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec sudo light -A 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec sudo light -U 10 # decrease screen brightness
 
 # Bind flameshot to print screen : !requires flameshot
 
@@ -209,8 +209,10 @@ assign [class="MongoDB Compass"] $ws9
 
 bindsym $mod+shift+x exec i3lock
 # start commands
-exec google-chrome
+exec light -S 30
+exec google-chrome-stable
 exec code
 exec thunderbird
-# exec superproductivity
+exec superproductivity
 exec discord
+
