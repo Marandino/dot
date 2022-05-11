@@ -100,7 +100,9 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias krew="cd ~/krew && (trap 'kill 0' SIGINT; npm run dev-chi & npm run watch)"
+alias krew="cd ~/krew && (trap 'kill 0' SIGINT; npm run dev & cd ~/sessions && npm run dev )"
+alias krewapp="cd ~/app && (trap 'kill 0' SIGINT; yarn storybook &  yarn start & yarn android )"
+
 #bindkey '^r' history-incremental-search-backward
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"

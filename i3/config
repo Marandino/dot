@@ -130,8 +130,8 @@ set $ws10 "Code"
 workspace $ws1 output eDP
 workspace $ws2 output eDP
 workspace $ws3 output eDP
-workspace $ws9 output HDMI-A-0
-workspace $ws10 output HDMI-A-0
+workspace $ws9 output HDMI-A-0 eDP
+workspace $ws10 output HDMI-A-0 eDP
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
