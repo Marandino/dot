@@ -31,3 +31,5 @@
 	excludesfile = /home/marandino/.gitignore_global
 	editor = vim
  
+[init]
+	defaultBranch = main
