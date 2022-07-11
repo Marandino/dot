@@ -101,6 +101,8 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias krew="cd ~/krew && (trap 'kill 0' SIGINT; npm run dev & cd ~/sessions && npm run dev )"
+alias app="cd ~/mobile && nvm use 16 && yarn start"
+
 alias krewapp="cd ~/app && (trap 'kill 0' SIGINT; yarn storybook &  yarn start & yarn android )"
 
 #bindkey '^r' history-incremental-search-backward
