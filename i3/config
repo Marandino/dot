@@ -123,13 +123,14 @@ set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "Mongo"
+set $ws9 "Browser 2"
 set $ws10 "Code"
 
 # default monitors
 workspace $ws1 output eDP
 workspace $ws2 output eDP
 workspace $ws3 output eDP
+workspace $ws4 output eDP
 workspace $ws9 output HDMI-A-0 eDP
 workspace $ws10 output HDMI-A-0 eDP
 
@@ -205,7 +206,7 @@ assign [class="Code"] $ws10
 assign [class="Google-chrome"] $ws1
 assign [class="(?i)productivity"] $ws2
 assign [class="(?i)discord"] $ws4
-assign [class="Thunderbird"] $ws3
+assign [class="(?i)thunderbird"] $ws3
 assign [class="MongoDB Compass"] $ws9
 
 bindsym $mod+shift+x exec i3lock
@@ -214,6 +215,8 @@ exec light -S 30
 exec google-chrome-stable
 exec code
 exec thunderbird
-exec superproductivity
+# exec superproductivity
 exec discord
+exec xrandr --output eDP --auto --output HDMI-A-0 --auto --rotate normal  --right-of eDP
+
 
