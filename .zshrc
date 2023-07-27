@@ -100,10 +100,22 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias krew="cd ~/krew && (trap 'kill 0' SIGINT; npm run dev & cd ~/sessions && npm run dev )"
-alias app="cd ~/mobile && nvm use 16 && yarn start"
+alias krew="cd ~/krew && (trap 'kill 0' SIGINT; npm run dev-chi & cd ~/sessions && npm run dev )"
+alias kerver="cd ~/krew && (trap 'kill 0' SIGINT; npm run dev-chi & cd ~/sessions && npm run dev )"
+alias kapp="cd ~/mobile && nvm use 16 && yarn start"
+alias kserver="cd ~/krew && npm run dev-chi"
+alias kweb="cd ~/web && nvm use 16 && yarn start"
+alias web="cd ~/krew && nvm use 14 && (trap 'kill 0' SIGINT; npm run dev-chi & cd ~/web && nvm use 16 && yarn start )"
+alias cum="code ~/scrum.md"
+alias gc="gitmoji -c"
 
-alias krewapp="cd ~/app && (trap 'kill 0' SIGINT; yarn storybook &  yarn start & yarn android )"
+# Aliases for Work (Koloni)
+alias rental="cd ~/rental-lite-app && npm run start"
+
+# Aliases for my home setup
+alias unapant='xrandr --output eDP --off --output HDMI-A-0 --auto'
+alias dospant='xrandr --output eDP --auto --output HDMI-A-0 --auto --rotate normal  --right-of eDP'
+alias pantvertical='xrandr --output eDP --auto --output HDMI-A-0 --auto --rotate horizontal  --right-of eDP'
 
 #bindkey '^r' history-incremental-search-backward
 # alias zshconfig="mate ~/.zshrc"
