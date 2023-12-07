@@ -1,5 +1,3 @@
-# Install from CURL via curl -s https://raw.githubusercontent.com/marandino/dot/master/install_packages.sh | bash
-
 #!/bin/bash
 
 # Update mirror list
@@ -17,15 +15,32 @@ sudo systemctl enable --now snapd.socket
 # Creating a symlink for snap
 sudo ln -s /var/lib/snapd/snap /snap
 
-# Installing Node Version Manager (nvm), Node.js, and npm
-echo "Installing nvm, Node.js, and npm..."
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-source ~/.zshrc
-nvm install 18
+# Installing Zsh
+echo "Installing Zsh..."
+sudo pacman -S zsh
 
-# Installing Oh My Zsh
-echo "Installing Oh My Zsh..."
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Change default shell to zsh for the current user
+chsh -s $(which zsh)
+
+# Now we will switch to zsh and install NVM and Oh My Zsh
+echo "Switching to Zsh to install nvm, Node.js, npm, and Oh My Zsh..."
+
+# Using zsh to execute the install commands for nvm and Oh My Zsh
+zsh << 'EOF'
+    # Install nvm (Node Version Manager), Node.js, and npm
+    echo "Installing nvm, Node.js, and npm..."
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    nvm install 18
+
+    # Install Oh My Zsh
+    echo "Installing Oh My Zsh..."
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    # Make sure the current shell instance has access to nvm and other cmds
+    source $HOME/.zshrc
+EOF
 
 # Installing Work Related Packages
 echo "Installing work-related packages..."
