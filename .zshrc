@@ -99,24 +99,51 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
 alias krew="cd ~/krew && (trap 'kill 0' SIGINT; npm run dev-chi & cd ~/sessions && npm run dev )"
-alias kerver="cd ~/krew && (trap 'kill 0' SIGINT; npm run dev-chi & cd ~/sessions && npm run dev )"
-alias kapp="cd ~/mobile && nvm use 16 && yarn start"
-alias kserver="cd ~/krew && npm run dev-chi"
-alias kweb="cd ~/web && nvm use 16 && yarn start"
-alias web="cd ~/krew && nvm use 14 && (trap 'kill 0' SIGINT; npm run dev-chi & cd ~/web && nvm use 16 && yarn start )"
 alias cum="code ~/scrum.md"
 alias gc="gitmoji -c"
 
-# Aliases for Work (Koloni)
-alias rental="cd ~/rental-lite-app && npm run start"
+alias server="cd ~/koloni/lockers-api && (trap 'kill 0' SIGINT; docker compose up --build --wait  & docker compose alpha watch)"
+alias docker-desktop="systemctl --user start docker-desktop"
 
 # Aliases for my home setup
 alias unapant='xrandr --output eDP --off --output HDMI-A-0 --auto'
-alias dospant='xrandr --output eDP --auto --output HDMI-A-0 --auto --rotate normal  --right-of eDP'
-alias pantvertical='xrandr --output eDP --auto --output HDMI-A-0 --auto --rotate horizontal  --right-of eDP'
+alias laptop='xrandr --output eDP --auto --output HDMI-A-0 --off'
+alias dospant='xrandr --output eDP --auto --primary --output HDMI-A-0 --auto --rotate normal --right-of eDP'
+alias noveo='xrandr --output eDP --auto --primary --output HDMI-A-0 --auto --rotate normal --above eDP'
+alias pantvertical='xrandr --output eDP --auto --output HDMI-A-0 --auto --rotate left --right-of eDP'
+alias manga='xrandr --output eDP --auto --output HDMI-A-0 --auto --rotate left --right-of eDP'
+alias vpn="bash ~/dot/vpn.sh"
+
+# Bun
+alias brun="bun run"
+
+# # Command for a weekly report
+# alias resacon='for dir in ~/koloni/*; do
+#   if [ -d "$dir/.git" ]; then
+#     echo "Repository: $dir"
+#     git quepasoayer
+#     echo # Add a line break for readability
+#   fi
+# done'
 
 #bindkey '^r' history-incremental-search-backward
 # alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# alias ohmyzsh="mate ~/.oh-my-zsh
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+export PATH="$PATH:$GEM_HOME/bin"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# bun completions
+[ -s "/home/marandino/.bun/_bun" ] && source "/home/marandino/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
