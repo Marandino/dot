@@ -63,5 +63,7 @@ echo "Installing essential entertainment and utility packages..."
 sudo pacman -S stremio steam gparted ngrok pavucontrol thunderbird
 
 # Install Snap Packages
-echo "Installing snap packages..."
-sudo snap install docker discord heroku spotify superproductivity postman
+echo "Installing Docker, Discord, Spotify, Super Productivity, and Postman..."
+sudo snap install docker discord spotify superproductivity postman
+echo "Installing Heroku and VS Code..."
+sudo snap install heroku code --classic
