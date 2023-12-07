@@ -3,6 +3,8 @@
 	name = Chiyen Venegas
 [alias]
 	resacon = !git log --source --since=yesterday --until=today --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all --author="Chiyen"
+	# quepasoayer = !git log --source --since=yesterday --until=today --pretty=format:'%Cred%h%Cresetñ %s' --all --author="Chiyen"
+	quepasoayer = !git log --source --since=yesterday --until=today --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %Cblue%B%Creset'  --all --author="Chiyen"
 	allhands = !git log --source --all --author=Chiyen --since=1_week_ago --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 
 	undo = reset --soft HEAD^
