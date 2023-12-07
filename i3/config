@@ -115,16 +115,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "Browser"
-set $ws2 "2"
-set $ws3 "Email"
-set $ws4 "Discord"
+set $ws1 "1:Browser"
+set $ws2 "2:Pomodoro"
+set $ws3 "3:Email"
+set $ws4 "4:Discord"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "Browser 2"
-set $ws10 "Code"
+set $ws9 "9:Browser 2"
+set $ws10 "10:Code"
 
 # default monitors
 workspace $ws1 output eDP
@@ -167,27 +167,27 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+# These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym ntilde resize grow width 10 px or 10 ppt
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
+	bindsym j resize shrink width 10 px or 10 ppt
+		bindsym k resize grow height 10 px or 10 ppt
+		bindsym l resize shrink height 10 px or 10 ppt
+		bindsym ntilde resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+# same bindings, but for the arrow keys
+		bindsym Left resize shrink width 10 px or 10 ppt
+		bindsym Down resize grow height 10 px or 10 ppt
+		bindsym Up resize shrink height 10 px or 10 ppt
+		bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+# back to normal: Enter or Escape or $mod+r
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+		bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -197,26 +197,42 @@ bindsym Mod1+Tab workspace back_and_forth
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+	position bottom
+		# tray_output all
+		strip_workspace_numbers yes \
+		status_command bumblebee-status  \
+		-m progress ping pomodoro network memory disk sensors cpu date time amixer battery pacman \
+		-p root.path=/ time.format="%H:%M" date.format="%a %b %d" sensors.show_freq="false" battery.decorate="true" pacman.sum="true" memory.format="{percent:05.2f}%" disk.warning="85" disk.format="{left}" disk.system="SI" \
+		-a ping pacman \
+		-t gruvbox
 }
 
 # stuff
 
-assign [class="Code"] $ws10
 assign [class="Google-chrome"] $ws1
 assign [class="(?i)productivity"] $ws2
-assign [class="(?i)discord"] $ws4
+assign [class="(?i)Spotify"] $ws2
 assign [class="(?i)thunderbird"] $ws3
+assign [class="(?i)discord"] $ws4
+assign [class="(?i)Slack"] $ws4
 assign [class="MongoDB Compass"] $ws9
+assign [class="(?i)Obsidian"] $ws9
+assign [class="Code"] $ws10
 
 bindsym $mod+shift+x exec i3lock
 # start commands
+exec obsidian
+exec spotify
 exec light -S 30
+exec xrandr --output eDP --auto --output HDMI-A-0 --auto --rotate normal  --right-of eDP
 exec google-chrome-stable
-exec code
 exec thunderbird
 # exec superproductivity
 exec discord
-exec xrandr --output eDP --auto --output HDMI-A-0 --auto --rotate normal  --right-of eDP
+exec slack
+exec code
+# exec xmodmap -e "keycode 52 mod1 = z Z less"
+# exec xmodmap -e "keycode 53 mod1 = x X greater"
+
 
 
